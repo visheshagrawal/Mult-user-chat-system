@@ -1,0 +1,57 @@
+DOCUMENTATION
+
+
+-Description of your code and how you implemented the function , logical description.
+	I have made two c files one for server and the other for client. I have used sockets for the multi user chat system. Basically when my client wants to send his message to the other client he sends the message to the socket by using the send command . In his message he sends which person he needs to send his message to .The server first recieves the message and reads it. The server then parses the message andd sends it acordingly to the recipient. I have also implemented EXIT condition as well as ONLINE feature where we get to see which client is at what number.   
+	Whenever a user(client) needs to do somthing he needs to type it in his window .
+	He has 4 features:
+
+		1). ONLINE : Displays all the other users.
+		2).	SENDMSG : Sends message to a particular individual -- Syntax : SENDMSG clientnum message
+		(clientnum being the number with which the client identifies himself or the number which he got by the server , with message being the text you wanna send without "")
+		3).	SENDALL	: Sends message to everyother user -- Syntax to use it is: SENDALL message
+		(with message being the text you wanna send without "")
+		4).	EXIT : Exits from the multiuser system
+
+	
+
+
+
+ –Description of how to compile and test the program 
+
+ Makefile is there , first we compile the c program and then run the output file. For server we create only one instance but we create as many instances of client as we want.
+ 
+
+ –The inputs the user should give 
+(considering there are 3 users this time)
+ ONLINE
+ <(In 1's screen)>
+ SENDMSG 2 Hi
+ SENDALL Hey
+
+ <(In 2's screen)>
+SENDMSG 3      HIII
+SENDMSG 2 Hey
+
+ <(In 3's screen)>
+ clear
+
+ –Expected output (and how to interpret it)
+<(In Screen 1)>
+
+<(In Screen 2)>
+Personal Message by 1: Hi
+Global Message by 1: Hey
+Please don't send message to yourself
+
+<(In Screen 3)>
+Personal Message by 2: HIII
+Global Message by 1: Hey
+Please enter a valid command
+
+ –Error values and how to interpret them
+
+ Errors handled:
+ 	1). If commands like EXIT,SENDMSG,SENDALL,ONLINE are not used -- command not valid
+ 	2). If message is sent by using SENDMSG to the same person -- don't send message to yourself.
+ 	3). In client program if you want to exit you can only exit using EXIT command , if you try using ctrl+c error will be thrown and -- exit using EXIT
